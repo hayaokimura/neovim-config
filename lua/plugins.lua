@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive' -- git command が叩ける
 
   -- ファイル検索ができる
-  use 'nvim-lua/plenary.nvim'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
