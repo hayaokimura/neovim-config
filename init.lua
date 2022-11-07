@@ -16,6 +16,7 @@ vim.cmd("colorscheme gruvbit")
 -- command alias of telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
 -- bs で前のファイルに戻れる設定 follow md links に依存している
 vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
