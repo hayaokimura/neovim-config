@@ -24,7 +24,7 @@ vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "lua", "markdown", "markdown_inline" },
   highlight = {
-    enable = true,
+    enable = false,
   },
 }
 
