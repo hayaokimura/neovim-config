@@ -28,3 +28,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+--zk-nvim のセットアップ
+require("zk").setup()
+

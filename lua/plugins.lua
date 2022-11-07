@@ -4,28 +4,20 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  -- color schema
-  use 'habamax/vim-gruvbit'
+  use 'wbthomason/packer.nvim' -- Packer can manage itself
+  use 'habamax/vim-gruvbit' -- color schema
+  use 'jghauser/follow-md-links.nvim' -- markdown のリンクを踏むと飛べる
+  use 'airblade/vim-gitgutter' -- git のファイル差分を表示する
+  use 'tpope/vim-fugitive' -- git command が叩ける
 
-  -- markdown のリンクを踏む
-  use {
-    'jghauser/follow-md-links.nvim'
-  }
-
-  -- git のファイル差分を表示する
-  use 'airblade/vim-gitgutter'
-
-  -- git command が叩ける
-  use 'tpope/vim-fugitive'
-
+  -- ファイル検索ができる
   use 'nvim-lua/plenary.nvim'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  use 'mickael-menu/zk-nvim' -- zk command を vim から使えるらしい
   
-  -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlight
 end)
