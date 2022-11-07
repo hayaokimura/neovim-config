@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- tree 表示をする
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
