@@ -44,3 +44,20 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
+-- empty setup using defaults
+require("mason").setup()
+
+-- 設定が書いてあるフォルダを開くエイリアス
+vim.api.nvim_create_user_command('Config', 'tabnew | e ~/.config/nvim', { nargs = 0 })
+
+-- 今日の DailyNote を開くエイリアス
+vim.api.nvim_create_user_command('DailyNote', 'cd ~/ghq/github.com/hayaokimura/dailynote | ZkNew', { nargs = 0 })
+-- vim.api.nvim_create_user_command(
+--   'DailyNote',
+--   function()
+--     d = os.date("*t", t)
+--     vim.api.nvim_command()
+--   end,
+--   { nargs = 0 }
+-- )
+
