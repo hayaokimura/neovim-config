@@ -17,6 +17,7 @@ vim.cmd("colorscheme gruvbit")
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fc', builtin.oldfiles, {})
 
 -- bs で前のファイルに戻れる設定 follow md links に依存している
 vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
@@ -52,12 +53,30 @@ vim.api.nvim_create_user_command('Config', 'tabnew | e ~/.config/nvim', { nargs 
 
 -- 今日の DailyNote を開くエイリアス
 vim.api.nvim_create_user_command('DailyNote', 'cd ~/ghq/github.com/hayaokimura/dailynote | ZkNew', { nargs = 0 })
--- vim.api.nvim_create_user_command(
---   'DailyNote',
---   function()
---     d = os.date("*t", t)
---     vim.api.nvim_command()
---   end,
---   { nargs = 0 }
--- )
+
+-- rspec neoterm 設定
+vim.g.neoterm_default_mod='belowright'
+vim.g.neoterm_size=25
+vim.g.neoterm_autoscroll=1
+vim.g.neoterm_rspec_cmd='SKIP_SEED=1 bin/rspec'
+
+
+
+vim.keymap.set('n', '<Leader>l', function()
+  local opt = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')..':'..vim.api.nvim_win_get_cursor(0)[1]
+  local command_str = vim.g.neoterm_rspec_cmd..' '..opt
+  vim.fn['neoterm#do']({ cmd = command_str })
+end)
+vim.keymap.set('n', '<Leader>t', function()
+  local opt = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')
+  local command_str = vim.g.neoterm_rspec_cmd..' '..opt
+  vim.fn['neoterm#do']({ cmd = command_str })
+end)
+
+
+
+
+
+
+
 

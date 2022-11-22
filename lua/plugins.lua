@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
   use 'jghauser/follow-md-links.nvim' -- markdown のリンクを踏むと飛べる
   use 'airblade/vim-gitgutter' -- git のファイル差分を表示する
   use 'tpope/vim-fugitive' -- git command が叩ける
-  use 'williamboman/mason.nvim' -- LSP
+  use 'kassio/neoterm' -- terminal の wrapper
 
   -- ファイル検索ができる
   use {
@@ -29,18 +29,5 @@ return require('packer').startup(function(use)
   use 'mickael-menu/zk-nvim' -- zk command を vim から使えるらしい
   
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlight
-
-  use {
-    "folke/todo-comments.nvim",
-    branch = "neovim-pre-0.8.0",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
 
 end)
