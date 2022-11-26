@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  use 'mickael-menu/zk-nvim' -- zk command を vim から使えるらしい
+  use 'renerocksai/telekasten.nvim' -- zettelkasten を使える
   
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlight
 
