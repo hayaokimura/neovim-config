@@ -11,6 +11,26 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive' -- git command が叩ける
   use 'kassio/neoterm' -- terminal の wrapper
 
+  -- cf. https://joker1007.hatenablog.com/entry/2022/09/03/172957
+  -- TODO: ちゃんと役割を整理する
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
+
+  -- cf. https://joker1007.hatenablog.com/entry/2022/09/03/172957
+  -- TODO: ちゃんと役割を整理する
+  use {
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-nvim-lsp', -- https://github.com/hrsh7th/cmp-nvim-lsp TODO: こいつの役割を明確にする
+    -- TODO: snippet を使えるようにできるらしい cf. https://github.com/hrsh7th/nvim-cmp#recommended-configuration
+  }
+
+
   -- ファイル検索ができる
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
