@@ -9,6 +9,8 @@ vim.g.mapleader = " "
 -- packer の plugin を記述しているファイルを読み込む
 require'plugins'
 
+require'telecasten'
+
 -- colorschema 読み込み
 vim.cmd("set termguicolors")
 vim.cmd("colorscheme gruvbit")
@@ -29,10 +31,6 @@ require'nvim-treesitter.configs'.setup {
     enable = false,
   },
 }
-
---zk-nvim のセットアップ
-require("zk").setup()
-
 
 -- nvim-tree の setup に従ったhttps://github.com/nvim-tree/nvim-tree.lua#setup
 -- disable netrw at the very start of your init.lua (strongly advised)
