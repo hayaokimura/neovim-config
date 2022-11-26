@@ -21,6 +21,12 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fc', builtin.oldfiles, {})
 
+
+-- telelasten keymap
+vim.keymap.set('i', '[[', function()
+  require('telekasten').insert_link({ i=true })
+end, {})
+
 -- bs で前のファイルに戻れる設定 follow md links に依存している
 vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
 
