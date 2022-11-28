@@ -18,6 +18,8 @@ require('gitsigns').setup {}
 -- packer の plugin を記述しているファイルを読み込む
 require'plugins'
 
+require'telecasten'
+
 -- colorschema 読み込み
 vim.cmd("set termguicolors")
 vim.cmd("colorscheme gruvbit")
@@ -27,6 +29,12 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fc', builtin.oldfiles, {})
+
+
+-- telelasten keymap
+vim.keymap.set('i', '[[', function()
+  require('telekasten').insert_link({ i=true, with_live_grep=true })
+end, {})
 
 -- bs で前のファイルに戻れる設定 follow md links に依存している
 vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
@@ -41,10 +49,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   }
 }
-
---zk-nvim のセットアップ
-require("zk").setup()
-
 
 -- nvim-tree の setup に従ったhttps://github.com/nvim-tree/nvim-tree.lua#setup
 -- disable netrw at the very start of your init.lua (strongly advised)
