@@ -7,7 +7,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Packer can manage itself
   use 'habamax/vim-gruvbit' -- color schema
   use 'jghauser/follow-md-links.nvim' -- markdown のリンクを踏むと飛べる
-  use 'airblade/vim-gitgutter' -- git のファイル差分を表示する
   use 'tpope/vim-fugitive' -- git command が叩ける
   use 'kassio/neoterm' -- terminal の wrapper
 
@@ -47,7 +46,9 @@ return require('packer').startup(function(use)
   }
 
   use 'mickael-menu/zk-nvim' -- zk command を vim から使えるらしい
-  
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlight
 
+  use 'petertriho/nvim-scrollbar' -- スクロールバー表示できる
+  use 'lewis6991/gitsigns.nvim'
 end)

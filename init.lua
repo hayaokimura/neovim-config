@@ -2,9 +2,18 @@
 -- 行番号を表示する
 vim.opt.number = true
 
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
 -- leader key の変更
 vim.g.mapleader = " "
 
+-- scroll bar 有効化
+require("scrollbar").setup()
+
+require('gitsigns').setup {}
 
 -- packer の plugin を記述しているファイルを読み込む
 require'plugins'
@@ -24,10 +33,13 @@ vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
 
 --treesitter でパーサを自動インストールする設定。
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "markdown", "markdown_inline" },
+  ensure_installed = { "lua", "markdown", "markdown_inline", "ruby", "javascript" },
   highlight = {
     enable = false,
   },
+  indent = {
+    enable = true,
+  }
 }
 
 --zk-nvim のセットアップ
@@ -119,18 +131,35 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 require('mason-lspconfig').setup_handlers {
   function(server_name)
+    print(server_name)
     if server_name == 'ruby_ls' then
       lspconfig[server_name].setup {
-	cmd = { 'bundle', 'exec', 'ruby-lsp' },
+	      cmd = { 'bundle', 'exec', 'ruby-lsp' },
         capabilities = capabilities,
+      }
+    elseif server_name == 'sumneko_lua' then
+      lspconfig[server_name].setup {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = {'vim'},
+            },
+          },
+        },
       }
     else
       lspconfig[server_name].setup {
         capabilities = capabilities,
       }
     end
-  end,
+  end
 }
+
+-- KeyMapping for lsp
+local opts = {expr = true, noremap = true}
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 
 -- 設定が書いてあるフォルダを開くエイリアス
 vim.api.nvim_create_user_command('Config', 'tabnew | e ~/.config/nvim', { nargs = 0 })
@@ -143,8 +172,6 @@ vim.g.neoterm_default_mod='belowright'
 vim.g.neoterm_size=25
 vim.g.neoterm_autoscroll=1
 vim.g.neoterm_rspec_cmd='SKIP_SEED=1 bin/rspec'
-
-
 
 vim.keymap.set('n', '<Leader>l', function()
   local opt = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')..':'..vim.api.nvim_win_get_cursor(0)[1]
