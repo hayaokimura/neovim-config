@@ -135,7 +135,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 require('mason-lspconfig').setup_handlers {
   function(server_name)
-    print(server_name)
     if server_name == 'ruby_ls' then
       lspconfig[server_name].setup {
 	      cmd = { 'bundle', 'exec', 'ruby-lsp' },
