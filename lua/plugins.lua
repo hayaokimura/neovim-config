@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  use 'renerocksai/telekasten.nvim' -- zettelkasten を使える
+  use '/Users/hayao-kimura/ghq/github.com/hayaokimura/telekasten.nvim' -- zettelkasten を使える
   
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlight
 
