@@ -97,6 +97,7 @@ cmp.setup({
     -- {name = 'buffer'},
     -- {name = 'cmdline'},
   }, {
+    { name = 'treesitter' },
     { name = 'buffer' },
   })
 })
@@ -139,6 +140,38 @@ require('mason-lspconfig').setup_handlers {
       lspconfig[server_name].setup {
 	      cmd = { 'bundle', 'exec', 'ruby-lsp' },
         capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          --on_attach(client, bufnr)
+
+          local callback = function()
+            local params = vim.lsp.util.make_text_document_params(bufnr)
+
+            client.request(
+              'textDocument/diagnostic',
+              { textDocument = params },
+              function(err, result)
+                if err then return end
+
+                vim.lsp.diagnostic.on_publish_diagnostics(
+                  nil,
+                  vim.tbl_extend('keep', params, { diagnostics = result.items }),
+                  { client_id = client.id }
+                )
+              end
+            )
+          end
+
+          callback() -- call on attach
+
+          vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
+            buffer = bufnr,
+            callback = callback,
+          })
+        end,
+      }
+    elseif server_name == 'sorbet' then
+      lspconfig[server_name].setup {
+	      cmd = { 'bundle', 'exec', 'srb', 'tc', '--lsp'}
       }
     elseif server_name == 'sumneko_lua' then
       lspconfig[server_name].setup {
