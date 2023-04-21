@@ -31,11 +31,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fc', builtin.oldfiles, {})
 
 
--- telelasten keymap
-vim.keymap.set('i', '[[', function()
-  require('telekasten').insert_link({ i=true, with_live_grep=true })
-end, {})
-
 -- bs で前のファイルに戻れる設定 follow md links に依存している
 vim.keymap.set('n', '<bs>', ':edit #<cr>', { silent = true })
 
@@ -197,12 +192,6 @@ require('mason-lspconfig').setup_handlers {
 local opts = {expr = true, noremap = true}
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 
--- 設定が書いてあるフォルダを開くエイリアス
-vim.api.nvim_create_user_command('Config', 'tabnew | e ~/.config/nvim', { nargs = 0 })
-
--- 今日の DailyNote を開くエイリアス
-vim.api.nvim_create_user_command('DailyNote', 'cd ~/ghq/github.com/hayaokimura/dailynote | ZkNew', { nargs = 0 })
-
 -- rspec neoterm 設定
 vim.g.neoterm_default_mod='belowright'
 vim.g.neoterm_size=25
@@ -219,11 +208,4 @@ vim.keymap.set('n', '<Leader>t', function()
   local command_str = vim.g.neoterm_rspec_cmd..' '..opt
   vim.fn['neoterm#do']({ cmd = command_str })
 end)
-
-
-
-
-
-
-
 
