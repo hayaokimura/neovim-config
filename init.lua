@@ -24,11 +24,13 @@ require('gitsigns').setup {}
 vim.cmd("set termguicolors")
 vim.cmd("colorscheme gruvbit")
 
+require('telescope').load_extension('vim_bookmarks')
 -- command alias of telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fc', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>fm', require('telescope').extensions.vim_bookmarks.all, {})
 
 
 -- bs で前のファイルに戻れる設定 follow md links に依存している

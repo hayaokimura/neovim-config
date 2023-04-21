@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
   }
 
   use 'renerocksai/telekasten.nvim' -- zettelkasten を使える
-  
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlight
 
   use 'petertriho/nvim-scrollbar' -- スクロールバー表示できる
@@ -54,4 +54,5 @@ return require('packer').startup(function(use)
 
   -- ブックマークをする https://github.com/MattesGroeger/vim-bookmarks
   use 'MattesGroeger/vim-bookmarks'
+  use 'tom-anders/telescope-vim-bookmarks.nvim'
 end)
