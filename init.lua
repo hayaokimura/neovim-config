@@ -10,15 +10,15 @@ vim.opt.shiftwidth = 2
 -- leader key の変更
 vim.g.mapleader = " "
 
--- scroll bar 有効化
-require("scrollbar").setup()
-
-require('gitsigns').setup {}
-
 -- packer の plugin を記述しているファイルを読み込む
 require'plugins'
 
 require'telecasten'
+
+-- scroll bar 有効化
+require("scrollbar").setup()
+
+require('gitsigns').setup {}
 
 -- colorschema 読み込み
 vim.cmd("set termguicolors")
