@@ -51,4 +51,7 @@ return require('packer').startup(function(use)
 
   use 'petertriho/nvim-scrollbar' -- スクロールバー表示できる
   use 'lewis6991/gitsigns.nvim'
+
+  -- ブックマークをする https://github.com/MattesGroeger/vim-bookmarks
+  use 'MattesGroeger/vim-bookmarks'
 end)
