@@ -211,3 +211,7 @@ vim.keymap.set('n', '<Leader>t', function()
   vim.fn['neoterm#do']({ cmd = command_str })
 end)
 
+-- configure vim-bookmarks
+-- 
+vim.g.bookmark_save_per_working_dir = 1
+
