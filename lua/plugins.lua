@@ -55,4 +55,6 @@ return require('packer').startup(function(use)
   -- ブックマークをする https://github.com/MattesGroeger/vim-bookmarks
   use 'MattesGroeger/vim-bookmarks'
   use 'tom-anders/telescope-vim-bookmarks.nvim'
+  use 'github/copilot.vim'
+
 end)
